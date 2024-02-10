@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "title": "Clean Water Initiative",
+    "image": "https://example.com/clean_water.jpg",
+    "category": "Humanitarian",
+    "description": "Provide clean and safe drinking water to communities in need.",
+    "amount": "5000"
+  },
+  {
+    "id": "2",
+    "title": "Education for All",
+    "image": "https://example.com/education_for_all.jpg",
+    "category": "Education",
+    "description": "Support underprivileged children with access to quality education.",
+    "amount": "3000"
+  },
+  {
+    "id": "3",
+    "title": "Emergency Relief Fund",
+    "image": "https://example.com/emergency_relief.jpg",
+    "category": "Disaster Relief",
+    "description": "Provide immediate aid and relief to victims of natural disasters.",
+    "amount": "7000"
+  },
+  {
+    "id": 4,
+    "title": "Animal Welfare Project",
+    "image": "https://example.com/animal_welfare.jpg",
+    "category": "Animal Rights",
+    "description": "Support initiatives aimed at protecting and caring for animals in need.",
+    "amount": "4000"
+  }
+]
