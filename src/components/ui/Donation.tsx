@@ -8,7 +8,10 @@ export type TDonation = {
   image: string;
   category: string;
   description: string;
-  amount: number;
+  amount: string;
+  collectedAmount: string;
+  endDate: string;
+  donators: string[];
 };
 
 const Donation = ({ donations }: { donations: TDonation[] }) => {

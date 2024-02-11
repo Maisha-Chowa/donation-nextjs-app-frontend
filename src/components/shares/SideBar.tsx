@@ -8,8 +8,8 @@ const { Content, Sider } = Layout;
 const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const adminItems = [
     { key: "1", label: "Dashboard", href: "/dashboard" },
-    { key: "2", label: "Add New Service", href: "/admin/add-service" },
-    { key: "3", label: "Manage Services", href: "/admin/manage-services" },
+    { key: "2", label: "Add Donation", href: "/admin/add-donation" },
+    { key: "3", label: "Manage Donation", href: "/admin/manage-donation" },
     { key: "4", label: "Back Home", href: "/" },
   ];
 

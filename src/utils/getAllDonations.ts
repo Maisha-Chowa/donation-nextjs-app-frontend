@@ -1,4 +1,4 @@
-export const getAllServices = async () => {
+export const getAllDonations = async () => {
   const res = await fetch("http://localhost:5000/api/v1/donation", {
     next: {
       revalidate: 5,

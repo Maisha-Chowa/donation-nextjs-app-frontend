@@ -1,8 +1,8 @@
-import { getAllServices } from "@/utils/getAllDonations";
+import { getAllDonations } from "@/utils/getAllDonations";
 import Donation from "./Donation";
 
 const FeaturedDonation = async () => {
-  const data = await getAllServices();
+  const data = await getAllDonations();
   console.log(data?.data);
 
   return (
