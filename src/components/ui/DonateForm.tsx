@@ -1,68 +1,62 @@
 "use client";
+import React from "react";
+import { Button, Form, Input, message } from "antd";
+import TextArea from "antd/es/input/TextArea";
+import { TAddDonationFormValues } from "@/components/ui/AddDonationForm";
+import { updateDonation } from "@/utils/actions/crud-donation";
+import { TParams } from "@/app/(rootLayout)/donations/[donationId]/page";
 
-import { Button, Form, Input } from "antd";
-import { TDonation } from "./Donation";
+// export type TDonationValues = {
+//   collectedAmount: string;
+//   donators: string[];
+// };
+const DonateForm = ({ info }: { info: TParams }) => {
+  const [form] = Form.useForm();
+  console.log(info);
+  const onFinish = async (values: any) => {
+    console.log("expected amount", values.amount);
 
-const DonateForm = ({ donation }: { donation: TDonation }) => {
+    const data: Partial<TAddDonationFormValues> = {
+      collectedAmount: values.amount,
+      donators: [info?.userEmail],
+    };
+    console.log("from donateForm", data);
+    const res = await updateDonation(info.donationId, data);
+    if (res.success) {
+      message.success("Donate successfully");
+    }
+  };
+  const onFinishFailed = (errorInfo: any) => {
+    console.log("Failed:", errorInfo);
+  };
   return (
-    <div className="flex justify-center py-12">
-      <div className="lg:w-[50%] md:[60%] w-[90%] shadow-xl bg-white">
-        <h1 className="text-center text-xl py-6 ">Donation Form</h1>
-        <Form
-          layout="vertical"
-          name="basic"
-          initialValues={{
-            title: donation.title,
-            amount: donation.amount,
-            status: "Pending",
-          }}
-          autoComplete="off"
-          className="p-5"
-        >
-          <Form.Item label="Donation Title" name="donationTitle">
-            <Input type="text" size="large" disabled className="text-black" />
-          </Form.Item>
-          <Form.Item label="Donation Amount" name="amount">
-            <Input type="text" size="large" disabled className="text-black" />
-          </Form.Item>
-          <Form.Item
-            label="Full Name"
-            name="fullName"
-            rules={[{ required: true, message: "Please input your name!" }]}
-          >
-            <Input type="text" size="large" className="text-black" />
-          </Form.Item>
+    <Form
+      layout="vertical"
+      name="basic"
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+      autoComplete="off"
+      className="p-5"
+      form={form}
+    >
+      <Form.Item
+        name="amount"
+        rules={[{ required: true, message: "Please input donation title!" }]}
+      >
+        <Input
+          type="text"
+          placeholder="amount"
+          size="large"
+          className="text-black border-double border-4 border-sky-500"
+        />
+      </Form.Item>
 
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[
-              { required: true, message: "Please input your email address!" },
-            ]}
-          >
-            <Input type="email" size="large" className="text-black" />
-          </Form.Item>
-
-          <Form.Item
-            label="Phone Number"
-            name="phone"
-            rules={[
-              { required: true, message: "Please input your Phone Number!" },
-            ]}
-          >
-            <Input type="text" size="large" />
-          </Form.Item>
-          <Form.Item className="hidden" name="status">
-            <Input type="hidden" size="large" />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit" block size="large">
-              Confirm Now
-            </Button>
-          </Form.Item>
-        </Form>
-      </div>
-    </div>
+      <Form.Item>
+        <Button type="primary" htmlType="submit" block size="large">
+          Donate Now
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
 

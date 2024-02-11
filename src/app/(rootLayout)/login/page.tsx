@@ -5,10 +5,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
-import { GoogleOutlined } from "@ant-design/icons";
-import { createUser } from "@/utils/actions/create-user";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/utils/authOptions";
+
 
 type TForm = {
   email: string;

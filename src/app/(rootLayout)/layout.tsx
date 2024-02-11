@@ -5,6 +5,7 @@ import { authOptions } from "@/utils/authOptions";
 import { getServerSession } from "next-auth";
 import React from "react";
 import { message } from "antd";
+
 const WithRootLayout = async ({
   children,
 }: Readonly<{
@@ -15,10 +16,11 @@ const WithRootLayout = async ({
     email: string;
     password: string;
   };
+
   const session = await getServerSession(authOptions);
   console.log(session?.user);
   const user = session?.user;
-  //console.log(user);
+  console.log(user?.email);
   const data = {
     username: user?.name,
     email: user?.email,

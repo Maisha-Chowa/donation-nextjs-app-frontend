@@ -1,6 +1,7 @@
 "use client";
 
-import { Button, Form, Input } from "antd";
+import { createDonation } from "@/utils/actions/crud-donation";
+import { Button, Form, Input, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { useRouter } from "next/navigation";
 
@@ -10,13 +11,20 @@ export type TAddDonationFormValues = {
   category: string;
   description: string;
   amount: string;
+  collectedAmount: string;
   endDate: string;
+  donators: [string];
 };
 
 const AddDonationForm = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const [form] = Form.useForm();
-  const onFinish = async (values: TAddDonationFormValues) => {};
+  const onFinish = async (values: TAddDonationFormValues) => {
+    const res = await createDonation(values);
+    if (res.success) {
+      message.success("Donation created successfully");
+    }
+  };
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };

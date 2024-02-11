@@ -3,12 +3,10 @@ import { Button, Divider, message } from "antd";
 import React from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-
 import Link from "next/link";
 import { createUser } from "@/utils/actions/create-user";
 import { signIn, useSession } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/utils/authOptions";
+
 
 type TForm = {
   username: string;
