@@ -11,7 +11,7 @@ export type TDonation = {
   amount: number;
 };
 
-const Donations = ({ donations }: { donations: TDonation[] }) => {
+const Donation = ({ donations }: { donations: TDonation[] }) => {
   return (
     <div className="col-span-9 grid grid-cols-3 gap-5 p-10 w-[80%] mx-auto">
       {donations?.map((donation: TDonation) => (
@@ -35,7 +35,7 @@ const Donations = ({ donations }: { donations: TDonation[] }) => {
             {donation?.category}
           </p>
           <Link
-            href={`/donation/${donation._id}`}
+            href={`/donations/${donation._id}`}
             className="mt-4 w-full text-right"
           >
             <Button type="primary">Donate Now</Button>
@@ -46,4 +46,4 @@ const Donations = ({ donations }: { donations: TDonation[] }) => {
   );
 };
 
-export default Donations;
+export default Donation;
