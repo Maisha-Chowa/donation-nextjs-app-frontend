@@ -5,6 +5,10 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { GoogleOutlined } from "@ant-design/icons";
+import { createUser } from "@/utils/actions/create-user";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/utils/authOptions";
 
 type TForm = {
   email: string;
@@ -105,6 +109,11 @@ const LoginPage = () => {
         htmlType="submit"
         className="mb-4 lg:mb-0 flex items-center justify-center gap-2 font-semibold w-full text-black"
         ghost
+        onClick={() =>
+          signIn("google", {
+            callbackUrl: "http://localhost:3000/",
+          })
+        }
       >
         <Image
           src="https://cdn-icons-png.flaticon.com/512/2965/2965278.png"

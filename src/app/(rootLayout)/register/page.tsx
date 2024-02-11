@@ -6,6 +6,9 @@ import { useForm } from "react-hook-form";
 
 import Link from "next/link";
 import { createUser } from "@/utils/actions/create-user";
+import { signIn, useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/utils/authOptions";
 
 type TForm = {
   username: string;
@@ -20,7 +23,6 @@ const RegisterPage = () => {
     handleSubmit,
     reset,
   } = useForm<TForm>();
-
   const onSubmit = async (data: TForm) => {
     const res = await createUser(data);
     if (res.success) {
@@ -127,6 +129,11 @@ const RegisterPage = () => {
           htmlType="submit"
           className="mb-4 lg:mb-0 flex items-center justify-center gap-2 font-semibold w-full text-black"
           ghost
+          onClick={() =>
+            signIn("google", {
+              callbackUrl: "http://localhost:3000/",
+            })
+          }
         >
           <Image
             src="https://cdn-icons-png.flaticon.com/512/2965/2965278.png"
