@@ -40,17 +40,27 @@ export const getAllDonations = async () => {
   });
   return res.json();
 };
-export const getAllDonationByID = async () => {
-  const res = await fetch(`${process.env.BACKEND_URL}/donation/`, {
-    next: {
-      revalidate: 5,
-    },
+export const getAllDonationByID = async (id: any) => {
+  const res = await fetch(`${process.env.BACKEND_URL}/donation/${id}`, {
+    method: "GET",
+    cache: "no-cache",
   });
   return res.json();
 };
 
+export const findDonationInfo = async ({ key }: any, { value }: any) => {
+  const res = await fetch(
+    `${process.env.BACKEND_URL}/donation/${(key = value)}`,
+    {
+      method: "GET",
+      cache: "no-cache",
+    }
+  );
+  return res.json();
+};
+
 export const deleteDonation = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/donation", {
+  const res = await fetch(`${process.env.BACKEND_URL}/donation`, {
     next: {
       revalidate: 5,
     },

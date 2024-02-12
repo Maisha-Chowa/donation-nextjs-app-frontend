@@ -3,7 +3,11 @@ import React from "react";
 import { Button, Form, Input, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { TAddDonationFormValues } from "@/components/ui/AddDonationForm";
-import { updateDonation } from "@/utils/actions/crud-donation";
+import {
+  findDonationInfo,
+  getAllDonationByID,
+  updateDonation,
+} from "@/utils/actions/crud-donation";
 import { TParams } from "@/app/(rootLayout)/donations/[donationId]/page";
 
 // export type TDonationValues = {
@@ -12,15 +16,23 @@ import { TParams } from "@/app/(rootLayout)/donations/[donationId]/page";
 // };
 const DonateForm = ({ info }: { info: TParams }) => {
   const [form] = Form.useForm();
-  console.log(info);
+  // console.log(info);
+
   const onFinish = async (values: any) => {
     console.log("expected amount", values.amount);
 
+    const donationInfo = await getAllDonationByID(info.donationId);
+    // console.log(donationInfo.data);
+    // console.log(donationInfo.data.collectedAmount);
+    const prevAmount = parseInt(donationInfo.data.collectedAmount);
+    const newAmount = prevAmount + parseInt(values.amount);
+
     const data: Partial<TAddDonationFormValues> = {
-      collectedAmount: values.amount,
+      // collectedAmount: values.amount,
+      collectedAmount: newAmount.toString(),
       donators: [info?.userEmail],
     };
-    console.log("from donateForm", data);
+    // console.log("from donateForm", data);
     const res = await updateDonation(info.donationId, data);
     if (res.success) {
       message.success("Donate successfully");

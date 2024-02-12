@@ -4,6 +4,7 @@ import banner from "@/assets/banner.png";
 import DonateForm from "@/components/ui/DonateForm";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/authOptions";
+import { TAddDonationFormValues } from "@/components/ui/AddDonationForm";
 
 export type TParams = {
   donationId: string;
@@ -23,12 +24,10 @@ const DonationDatails = async ({ params }: { params: TParams }) => {
     userEmail: userEmail,
   };
 
-  const res = await fetch(
-    `http://localhost:5000/api/v1/donation/${donationId}`
-  );
+  const res = await fetch(`${process.env.BACKEND_URL}/donation/${donationId}`);
   const data = await res.json();
   console.log(data.data);
-  const donation = data?.data;
+  const donation: TAddDonationFormValues = data?.data;
 
   return (
     <>

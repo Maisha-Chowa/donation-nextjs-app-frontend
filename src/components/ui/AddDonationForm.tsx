@@ -6,6 +6,7 @@ import TextArea from "antd/es/input/TextArea";
 import { useRouter } from "next/navigation";
 
 export type TAddDonationFormValues = {
+  _id: string;
   title: string;
   image: string;
   category: string;

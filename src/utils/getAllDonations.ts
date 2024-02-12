@@ -1,5 +1,5 @@
 export const getAllDonations = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/donation", {
+  const res = await fetch(`${process.env.BACKEND_URL}/donation`, {
     next: {
       revalidate: 5,
     },

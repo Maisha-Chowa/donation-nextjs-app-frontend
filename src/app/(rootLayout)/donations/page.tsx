@@ -2,7 +2,7 @@ import React from "react";
 import Donation from "@/components/ui/Donation";
 
 const Donations = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/donation", {
+  const res = await fetch(`${process.env.BACKEND_URL}/donation`, {
     cache: "no-store",
   });
   const data = await res.json();
