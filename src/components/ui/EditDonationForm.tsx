@@ -96,7 +96,7 @@ const EditDonationForm = ({
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" block size="large">
+            <Button type="default" className="text-white bg-pink-900" htmlType="submit" block size="large">
               Update Now
             </Button>
           </Form.Item>

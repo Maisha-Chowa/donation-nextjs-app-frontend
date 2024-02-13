@@ -2,8 +2,10 @@
 
 import { Button, Layout, Menu, Typography } from "antd";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import logo from "../../assets/Logo.png";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -19,11 +21,16 @@ const Navbar = ({ session }: { session: any }) => {
 
   return (
     <Layout className="layout shadow-lg">
-      <Header className="flex items-center py-8 bg-white ">
-        <Content>
+      <Header className="flex items-center py-8 bg-white h-[100px]">
+        <Content className="flex flex-row">
+          <Image
+            className="drop-shadow-2xl h-[2%] w-[20%] mx-4"
+            src={logo}
+            alt=""
+          />
           <Link href="/">
             <Title className="m-0 text-2xl flex items-center">
-              <p className="m-0 ml-2">Next Donations</p>
+              <p className="m-0 ml-2  text-pink-900">Next Donations</p>
             </Title>
           </Link>
         </Content>

@@ -13,9 +13,7 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   console.log(role);
   return (
     <div className="min-h-[calc(100vh-64px)]">
-      <Sidebar>
-        role={role} {children}
-      </Sidebar>
+      <Sidebar role={role}>{children}</Sidebar>
     </div>
   );
 };

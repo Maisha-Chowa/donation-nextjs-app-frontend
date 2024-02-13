@@ -6,14 +6,15 @@ import { usePathname } from "next/navigation";
 const { Content, Sider } = Layout;
 
 const Sidebar = (
-  { children }: { children: React.ReactNode },
-  { role }: any
+  { role }: any,
+  { children }: { children: React.ReactNode }
 ) => {
-  // console.log(role);
+  console.log(role);
   let userRole = false;
-  if (role == "admin") {
+  if (role === "admin") {
     userRole = true;
   }
+  console.log(userRole);
   const adminItems = [
     { key: "1", label: "Add Donation", href: "/admin/add-donation" },
     { key: "2", label: "Manage Donation", href: "/admin/manage-donation" },
@@ -37,7 +38,7 @@ const Sidebar = (
         <Layout className="lg:flex hidden">
           <Sider
             width={250}
-            className="min-h-screen bg-[#1677ff] m-6 py-2 rounded-xl"
+            className="min-h-screen bg-pink-900 m-6 py-2 rounded-xl"
           >
             <Menu
               className="h-full px-3 font-semibold  bg-transparent py-1"
@@ -47,12 +48,12 @@ const Sidebar = (
             >
               {userRole
                 ? adminItems.map((item) => (
-                    <Menu.Item key={item.key} className="text-blue-900">
+                    <Menu.Item key={item.key} className="text-white text-xl">
                       <Link href={item.href}>{item.label}</Link>
                     </Menu.Item>
                   ))
                 : userItems.map((item) => (
-                    <Menu.Item key={item.key} className="text-blue-900">
+                    <Menu.Item key={item.key} className="text-white text-xl">
                       <Link href={item.href}>{item.label}</Link>
                     </Menu.Item>
                   ))}

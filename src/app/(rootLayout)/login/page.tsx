@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 
-
 type TForm = {
   email: string;
   password: string;
@@ -88,23 +87,29 @@ const LoginPage = () => {
           )}
         </div>
 
-        <Button type="primary" block size="large" htmlType="submit">
+        <Button
+          type="default"
+          className="text-white bg-pink-900"
+          block
+          size="large"
+          htmlType="submit"
+        >
           Login
         </Button>
       </form>
       <p className="text-sm pt-2 font-semibold ">
-        New to iRepair?
-        <Link className="text-sky-500 underline ml-2" href="/register">
+        New to Next Donation?
+        <Link className="text-pink-500 underline ml-2" href="/register">
           Create a new account
         </Link>
       </p>
       <Divider plain>or</Divider>
       <Button
-        type="primary"
+        type="default"
         block
         size="large"
         htmlType="submit"
-        className="mb-4 lg:mb-0 flex items-center justify-center gap-2 font-semibold w-full text-black"
+        className="mb-4 lg:mb-0 flex items-center justify-center gap-2 font-semibold w-full text-white bg-pink-900"
         ghost
         onClick={() =>
           signIn("google", {

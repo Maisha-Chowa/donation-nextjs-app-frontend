@@ -41,7 +41,9 @@ const Donation = ({ donations }: { donations: TDonation[] }) => {
             href={`/donations/${donation._id}`}
             className="mt-4 w-full text-right"
           >
-            <Button type="primary">Donate Now</Button>
+            <Button type="default" className="text-white bg-pink-900">
+              Donate Now
+            </Button>
           </Link>
         </div>
       ))}

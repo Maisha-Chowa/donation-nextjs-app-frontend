@@ -10,11 +10,14 @@
   },
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.0.0",
+    "chart.js": "^4.4.1",
     "next": "14.1.0",
     "next-auth": "^4.24.5",
     "react": "^18",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
-    "react-hook-form": "^7.50.1"
+    "react-hook-form": "^7.50.1",
+    "react-minimal-pie-chart": "^8.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",

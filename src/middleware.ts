@@ -6,6 +6,7 @@ export async function middleware(request: NextRequest) {
   const token = await getToken({ req: request });
   const { pathname } = request.nextUrl;
   const role = token?.role;
+  console.log(role);
   if (role === "admin" && pathname.startsWith("/admin")) {
     return NextResponse.next();
   }

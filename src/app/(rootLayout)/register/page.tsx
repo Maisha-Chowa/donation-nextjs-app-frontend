@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { createUser } from "@/utils/actions/create-user";
 import { signIn, useSession } from "next-auth/react";
-
+import { useRouter } from "next/navigation";
 
 type TForm = {
   username: string;
@@ -21,10 +21,15 @@ const RegisterPage = () => {
     handleSubmit,
     reset,
   } = useForm<TForm>();
+  const router = useRouter();
+
   const onSubmit = async (data: TForm) => {
     const res = await createUser(data);
     if (res.success) {
       message.success("User created successfully");
+      setTimeout(() => {
+        router.push("/", { scroll: false });
+      }, 5000);
     }
   };
 
@@ -109,23 +114,29 @@ const RegisterPage = () => {
             )}
           </div>
 
-          <Button type="primary" block size="large" htmlType="submit">
+          <Button
+            type="default"
+            className="text-white bg-pink-900"
+            block
+            size="large"
+            htmlType="submit"
+          >
             Register
           </Button>
         </form>
         <p className="text-sm pt-2 font-semibold ">
           Already have a account?
-          <Link className="text-sky-500 underline ml-2" href="/login">
+          <Link className="text-pink-500 underline ml-2" href="/login">
             Please Login
           </Link>
         </p>
         <Divider plain>or</Divider>
         <Button
-          type="primary"
+          type="default"
           block
           size="large"
           htmlType="submit"
-          className="mb-4 lg:mb-0 flex items-center justify-center gap-2 font-semibold w-full text-black"
+          className="mb-4 lg:mb-0 flex items-center justify-center gap-2 font-semibold w-full "
           ghost
           onClick={() =>
             signIn("google", {
