@@ -5,12 +5,25 @@ import { usePathname } from "next/navigation";
 
 const { Content, Sider } = Layout;
 
-const Sidebar = ({ children }: { children: React.ReactNode }) => {
+const Sidebar = (
+  { children }: { children: React.ReactNode },
+  { role }: any
+) => {
+  // console.log(role);
+  let userRole = false;
+  if (role == "admin") {
+    userRole = true;
+  }
   const adminItems = [
-    { key: "1", label: "Dashboard", href: "/dashboard" },
-    { key: "2", label: "Add Donation", href: "/admin/add-donation" },
-    { key: "3", label: "Manage Donation", href: "/admin/manage-donation" },
+    { key: "1", label: "Add Donation", href: "/admin/add-donation" },
+    { key: "2", label: "Manage Donation", href: "/admin/manage-donation" },
+    { key: "3", label: "Edit Donation", href: "/admin/edit-donation" },
     { key: "4", label: "Back Home", href: "/" },
+  ];
+  const userItems = [
+    { key: "1", label: "My Donations", href: "user/my-donations" },
+    { key: "2", label: "Donation Statistics", href: "user/statistics" },
+    { key: "3", label: "Back Home", href: "/" },
   ];
 
   const pathname = usePathname();
@@ -32,11 +45,17 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
               defaultSelectedKeys={[getSelectedKey()]}
               selectedKeys={[getSelectedKey()]}
             >
-              {adminItems?.map((item) => (
-                <Menu.Item key={item.key} className="text-blue-900">
-                  <Link href={item.href}>{item.label}</Link>
-                </Menu.Item>
-              ))}
+              {userRole
+                ? adminItems.map((item) => (
+                    <Menu.Item key={item.key} className="text-blue-900">
+                      <Link href={item.href}>{item.label}</Link>
+                    </Menu.Item>
+                  ))
+                : userItems.map((item) => (
+                    <Menu.Item key={item.key} className="text-blue-900">
+                      <Link href={item.href}>{item.label}</Link>
+                    </Menu.Item>
+                  ))}
             </Menu>
           </Sider>
           <Content className=" p-6 pl-0 min-h-screen">{children}</Content>

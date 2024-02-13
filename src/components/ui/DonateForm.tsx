@@ -9,6 +9,7 @@ import {
   updateDonation,
 } from "@/utils/actions/crud-donation";
 import { TParams } from "@/app/(rootLayout)/donations/[donationId]/page";
+import { getUserByEmail, updateUserInfo } from "@/utils/actions/create-user";
 
 // export type TDonationValues = {
 //   collectedAmount: string;
@@ -16,7 +17,7 @@ import { TParams } from "@/app/(rootLayout)/donations/[donationId]/page";
 // };
 const DonateForm = ({ info }: { info: TParams }) => {
   const [form] = Form.useForm();
-  // console.log(info);
+  //console.log(info);
 
   const onFinish = async (values: any) => {
     console.log("expected amount", values.amount);
@@ -32,9 +33,18 @@ const DonateForm = ({ info }: { info: TParams }) => {
       collectedAmount: newAmount.toString(),
       donators: [info?.userEmail],
     };
-    // console.log("from donateForm", data);
     const res = await updateDonation(info.donationId, data);
     if (res.success) {
+      const userIfo = await getUserByEmail(info?.userEmail);
+      const id = userIfo?.data[0]._id;
+      console.log(id);
+      console.log(info.donationId);
+      const data = {
+        donatedAmount: values.amount,
+        donations: [info.donationId],
+      };
+      const updateInfo = await updateUserInfo(id, data);
+      console.log(updateInfo);
       message.success("Donate successfully");
     }
   };

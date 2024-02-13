@@ -3,9 +3,9 @@ import { Button, Modal, Table } from "antd";
 import { useState } from "react";
 import { DeleteFilled, PlusOutlined, EditOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
-
 import { AnyObject } from "antd/es/_util/type";
 import { TAddDonationFormValues } from "./AddDonationForm";
+import { deleteDonation } from "@/utils/actions/crud-donation";
 
 const ManageDonationTable = ({
   donations,
@@ -15,7 +15,10 @@ const ManageDonationTable = ({
   const router = useRouter();
 
   const handleDeleteWithConfirmation = (id: string) => {
-    const handleOk = async () => {};
+    console.log("donation id", id);
+    const handleOk = async () => {
+      await deleteDonation(id)
+    };
 
     Modal.confirm({
       title: "Are you sure you want to delete this donation?",
@@ -53,14 +56,19 @@ const ManageDonationTable = ({
       key: "title",
     },
     {
-      title: "category",
+      title: "Amount",
+      dataIndex: "amount",
+      key: "amount",
+    },
+    {
+      title: "Category",
       dataIndex: "category",
       key: "category",
     },
     {
-      title: "amount",
-      dataIndex: "amount",
-      key: "amount",
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
     },
     {
       title: "Action",
@@ -71,7 +79,7 @@ const ManageDonationTable = ({
             <Button
               className="text-xl"
               type="link"
-              onClick={() => router.push(`/admin/edit-service/${record._id}`)}
+              onClick={() => router.push(`/admin/edit-donation/${record._id}`)}
             >
               <EditOutlined />
             </Button>
@@ -91,7 +99,7 @@ const ManageDonationTable = ({
   return (
     <div className="bg-gray-200 lg:p-6 md:p-6 p-4 rounded-xl lg:min-h-screen">
       <div className="flex justify-between items-center pb-4">
-        <h1 className="text-2xl ">Manage donations</h1>
+        <h1 className="text-2xl ">Manage Donations</h1>
         <Button type="link" onClick={() => router.push("/admin/add-donation")}>
           <PlusOutlined /> Add New Donation{" "}
         </Button>

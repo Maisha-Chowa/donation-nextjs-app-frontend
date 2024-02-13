@@ -1,6 +1,8 @@
 "use server";
 
 import { TAddDonationFormValues } from "@/components/ui/AddDonationForm";
+import { error } from "console";
+import Error from "next/error";
 
 export const createDonation = async (data: any) => {
   const res = await fetch(`${process.env.BACKEND_URL}/donation/create`, {
@@ -36,11 +38,14 @@ export const updateDonation = async (
 export const getAllDonations = async () => {
   const res = await fetch(`${process.env.BACKEND_URL}/donation`, {
     method: "GET",
-    cache: "no-cache",
+    // cache: "no-cache",
+    next: {
+      revalidate: 5,
+    },
   });
   return res.json();
 };
-export const getAllDonationByID = async (id: any) => {
+export const getAllDonationByID = async (id: string) => {
   const res = await fetch(`${process.env.BACKEND_URL}/donation/${id}`, {
     method: "GET",
     cache: "no-cache",
@@ -59,11 +64,14 @@ export const findDonationInfo = async ({ key }: any, { value }: any) => {
   return res.json();
 };
 
-export const deleteDonation = async () => {
-  const res = await fetch(`${process.env.BACKEND_URL}/donation`, {
-    next: {
-      revalidate: 5,
-    },
-  });
-  return res.json();
+export const deleteDonation = async (id: string) => {
+  console.log(id);
+  const res = await fetch(
+    `${process.env.BACKEND_URL}/donation/${id}`,
+
+    {
+      method: "DELETE",
+      cache: "no-cache",
+    }
+  );
 };

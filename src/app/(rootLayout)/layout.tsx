@@ -15,6 +15,7 @@ const WithRootLayout = async ({
     username: string;
     email: string;
     password: string;
+    role: string;
   };
 
   const session = await getServerSession(authOptions);

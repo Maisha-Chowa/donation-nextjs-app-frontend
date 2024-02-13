@@ -11,7 +11,7 @@ export type TParams = {
   userEmail: string;
 };
 const DonationDatails = async ({ params }: { params: TParams }) => {
-  const donationId = params.donationId;
+  const donationId = params?.donationId;
   console.log(donationId);
 
   const session = await getServerSession(authOptions);
@@ -44,7 +44,11 @@ const DonationDatails = async ({ params }: { params: TParams }) => {
           <h1 className="text-2xl font-semibold">{donation?.title}</h1>
           <p className="my-3">{donation?.description}</p>
           <p>
-            <span className="font-semibold">Price:</span> {donation?.amount}
+            <span className="font-semibold">Amount:</span> {donation?.amount}
+          </p>
+          <p>
+            <span className="font-semibold">Collected Amount:</span>{" "}
+            {donation?.collectedAmount}
           </p>
           <p className="my-3">
             {" "}

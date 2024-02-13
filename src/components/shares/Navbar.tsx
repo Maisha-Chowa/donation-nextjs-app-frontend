@@ -10,7 +10,7 @@ const { Title } = Typography;
 
 const items = [
   { key: "1", label: "Home", href: "/" },
-  { key: "2", label: "Donaetions", href: "/donations" },
+  { key: "2", label: "Donations", href: "/donations" },
 ];
 
 const Navbar = ({ session }: { session: any }) => {
@@ -55,7 +55,7 @@ const Navbar = ({ session }: { session: any }) => {
                   signOut();
                 }}
               >
-                Logut
+                Logout
               </Button>
             </>
           ) : (
