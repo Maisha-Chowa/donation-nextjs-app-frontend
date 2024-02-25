@@ -22,7 +22,7 @@ const LoginPage = () => {
     signIn("irepair", {
       email: data.email,
       password: data.password,
-      callbackUrl: "/dashboard",
+      callbackUrl: "/",
     });
   };
 
@@ -113,7 +113,7 @@ const LoginPage = () => {
         ghost
         onClick={() =>
           signIn("google", {
-            callbackUrl: "http://localhost:3000/",
+            callbackUrl: "https://donation-nextjs-app-frontend.vercel.app/",
           })
         }
       >

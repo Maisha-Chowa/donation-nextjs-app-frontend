@@ -17,5 +17,6 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
     </div>
   );
 };
+// role={role}
 
 export default DashboardLayout;

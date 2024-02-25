@@ -46,17 +46,4 @@ export const updateUserInfo = async (id: string, data: any) => {
   return userInfo;
 };
 
-// export const getUserSearch = async (key: string, value: string) => {
-//   console.log(key, value);
-//   console.log(`${process.env.BACKEND_URL}/user?${key}=${value}`);
-//   const res = await fetch(
-//     `${process.env.BACKEND_URL}/user?${key}=${value} )}`,
-//     {
-//       method: "GET",
-//       cache: "no-cache",
-//     }
-//   );
-//   const userSearchInfo = await res.json();
-//   console.log(userSearchInfo);
-//   return userSearchInfo;
-// };
+

@@ -4,7 +4,6 @@ import { createUser } from "@/utils/actions/create-user";
 import { authOptions } from "@/utils/authOptions";
 import { getServerSession } from "next-auth";
 import React from "react";
-import { message } from "antd";
 
 const WithRootLayout = async ({
   children,

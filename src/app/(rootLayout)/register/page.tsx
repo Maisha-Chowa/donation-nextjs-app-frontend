@@ -25,10 +25,11 @@ const RegisterPage = () => {
 
   const onSubmit = async (data: TForm) => {
     const res = await createUser(data);
+    console.log(res);
     if (res.success) {
       message.success("User created successfully");
       setTimeout(() => {
-        router.push("/", { scroll: false });
+        router.push("/login", { scroll: false });
       }, 5000);
     }
   };
@@ -136,11 +137,11 @@ const RegisterPage = () => {
           block
           size="large"
           htmlType="submit"
-          className="mb-4 lg:mb-0 flex items-center justify-center gap-2 font-semibold w-full "
+          className="mb-4 lg:mb-0 flex items-center justify-center gap-2 font-semibold w-full text-white bg-pink-900"
           ghost
           onClick={() =>
             signIn("google", {
-              callbackUrl: "http://localhost:3000/",
+              callbackUrl: "https://donation-nextjs-app-frontend.vercel.app/",
             })
           }
         >

@@ -5,11 +5,14 @@ import { usePathname } from "next/navigation";
 
 const { Content, Sider } = Layout;
 
-const Sidebar = (
-  { role }: any,
-  { children }: { children: React.ReactNode }
-) => {
-  console.log(role);
+const Sidebar = ({
+  role,
+  children,
+}: {
+  role: string;
+  children: React.ReactNode;
+}) => {
+  // console.log(role);
   let userRole = false;
   if (role === "admin") {
     userRole = true;
@@ -18,12 +21,12 @@ const Sidebar = (
   const adminItems = [
     { key: "1", label: "Add Donation", href: "/admin/add-donation" },
     { key: "2", label: "Manage Donation", href: "/admin/manage-donation" },
-    { key: "3", label: "Edit Donation", href: "/admin/edit-donation" },
-    { key: "4", label: "Back Home", href: "/" },
+    //{ key: "3", label: "Edit Donation", href: "/admin/edit-donation" },
+    { key: "3", label: "Back Home", href: "/" },
   ];
   const userItems = [
-    { key: "1", label: "My Donations", href: "user/my-donations" },
-    { key: "2", label: "Donation Statistics", href: "user/statistics" },
+    { key: "1", label: "My Donations", href: "/user/my-donations" },
+    { key: "2", label: "Donation Statistics", href: "/user/statistics" },
     { key: "3", label: "Back Home", href: "/" },
   ];
 

@@ -45,7 +45,7 @@ const PieChartComponent = ({ data }) => {
         },
       },
     });
-  }, []);
+  }, [amount, collectedAmount, donatedAmount]);
 
   return (
     <div className="container">
