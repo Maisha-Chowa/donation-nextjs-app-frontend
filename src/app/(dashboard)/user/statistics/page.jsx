@@ -15,17 +15,40 @@ const Statistics = async () => {
   console.log(user?.email);
   const userIfo = await getUserByEmail(user?.email);
   const { donatedAmount, donations } = userIfo?.data[0];
-  console.log(donatedAmount, donations[0]);
-  const donationId = donations[0];
-  const donationInfo = await getAllDonationByID(donationId);
-  const { amount, collectedAmount } = donationInfo?.data;
-  console.log(amount, collectedAmount);
-  const data = {
-    donatedAmount: donatedAmount,
-    amount: amount,
-    collectedAmount: collectedAmount,
-  };
+  console.log(donatedAmount, donations);
+  let donationId;
+  let StatisticsData = [];
+  for (let i = 0; i < donations.length; i++) {
+    donationId = donations[i];
+    const donationInfo = await getAllDonationByID(donationId);
+    const { amount, collectedAmount, donators } = donationInfo?.data;
+    console.log(amount, collectedAmount, donators);
 
-  return <PieChartComponent data={data}></PieChartComponent>;
+    const isExist = donators.findIndex(
+      (donator) => donator.email === user?.email
+    );
+    console.log(isExist);
+    let DonatedAmount;
+    if (isExist !== -1) {
+      DonatedAmount = donators[isExist].donatedAmount;
+      console.log(DonatedAmount);
+      const data = {
+        donatedAmount: DonatedAmount,
+        amount: amount,
+        collectedAmount: collectedAmount,
+      };
+      StatisticsData.push(data);
+    }
+  }
+  console.log(StatisticsData);
+
+  return (
+    <div className="col-span-9 grid grid-cols-2 gap-5 p-10 w-[80%] mx-auto">
+      {StatisticsData?.map((data) => (
+        // eslint-disable-next-line react/jsx-key
+        <PieChartComponent data={data}></PieChartComponent>
+      ))}
+    </div>
+  );
 };
 export default Statistics;
