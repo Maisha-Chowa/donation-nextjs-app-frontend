@@ -21,8 +21,8 @@ const Statistics = async () => {
   for (let i = 0; i < donations.length; i++) {
     donationId = donations[i];
     const donationInfo = await getAllDonationByID(donationId);
-    const { amount, collectedAmount, donators } = donationInfo?.data;
-    console.log(amount, collectedAmount, donators);
+    const { title,amount, collectedAmount, donators } = donationInfo?.data;
+    console.log(title,amount, collectedAmount, donators);
 
     const isExist = donators.findIndex(
       (donator) => donator.email === user?.email
@@ -33,6 +33,7 @@ const Statistics = async () => {
       DonatedAmount = donators[isExist].donatedAmount;
       console.log(DonatedAmount);
       const data = {
+        title:title,
         donatedAmount: DonatedAmount,
         amount: amount,
         collectedAmount: collectedAmount,
@@ -46,7 +47,7 @@ const Statistics = async () => {
     <div className="col-span-9 grid grid-cols-2 gap-5 p-10 w-[80%] mx-auto">
       {StatisticsData?.map((data) => (
         // eslint-disable-next-line react/jsx-key
-        <PieChartComponent data={data}></PieChartComponent>
+        <PieChartComponent data={data} title={data.title}></PieChartComponent>
       ))}
     </div>
   );

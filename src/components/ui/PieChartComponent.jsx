@@ -2,7 +2,7 @@
 import Chart from "chart.js/auto";
 import React, { useRef, useEffect } from "react";
 
-const PieChartComponent = ({ data }) => {
+const PieChartComponent = ({ data, title }) => {
   const canvas = useRef();
   const chartInstance = useRef(null);
   const { donatedAmount, amount, collectedAmount } = data;
@@ -37,7 +37,7 @@ const PieChartComponent = ({ data }) => {
             },
             title: {
               display: true,
-              text: "Donation Statistics",
+              text: title, // Use the dynamically passed title
             },
           },
         },
@@ -48,9 +48,14 @@ const PieChartComponent = ({ data }) => {
         collectedAmount,
         donatedAmount,
       ];
+      if (chartInstance.current.options.title) {
+        chartInstance.current.options.title.text = title; // Update the title dynamically
+      } else {
+        chartInstance.current.options.title = { display: true, text: title }; // Initialize title if not present
+      }
       chartInstance.current.update();
     }
-  }, [amount, collectedAmount, donatedAmount]);
+  }, [amount, collectedAmount, donatedAmount, title]);
 
   return (
     <div className="container">
@@ -60,4 +65,3 @@ const PieChartComponent = ({ data }) => {
 };
 
 export default PieChartComponent;
-
