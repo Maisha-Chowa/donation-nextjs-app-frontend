@@ -21,12 +21,12 @@ const WithRootLayout = async ({
   console.log(session?.user);
   const user = session?.user;
   console.log(user?.email);
-  const data = {
-    username: user?.name,
-    email: user?.email,
-    password: "",
-  };
-  const res = await createUser(data);
+  // const data = {
+  //   username: user?.name,
+  //   email: user?.email,
+  //   password: "",
+  // };
+  // const res = await createUser(data);
   return (
     <div>
       <Navbar session={session ? true : false} />

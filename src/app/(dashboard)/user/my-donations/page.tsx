@@ -33,11 +33,3 @@ const MyDonationPage = async () => {
 };
 
 export default MyDonationPage;
-
-// {
-//   let donationId;
-//   for(const i=0; i<donationsId.length();i++){
-//     donationId= donationsId[i];
-//      <MyDonation donationId={donationId}></MyDonation>
-//   }
-// }

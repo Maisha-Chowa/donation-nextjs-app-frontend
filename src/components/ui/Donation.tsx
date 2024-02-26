@@ -15,6 +15,7 @@ export type TDonation = {
 };
 
 const Donation = ({ donations }: { donations: TDonation[] }) => {
+  console.log(donations);
   return (
     <div className="col-span-9 grid grid-cols-3 gap-5 p-10 w-[80%] mx-auto">
       {donations?.map((donation: TDonation) => (

@@ -4,6 +4,11 @@ import { getAllDonationByID } from "@/utils/actions/crud-donation";
 import { authOptions } from "@/utils/authOptions";
 import { getServerSession } from "next-auth";
 
+// export type TStatisticsData = {
+//   donatedAmount: string;
+//   amount: string;
+//   collectedAmount: string;
+// };
 const Statistics = async () => {
   const session = await getServerSession(authOptions);
   const user = session?.user;

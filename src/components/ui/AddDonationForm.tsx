@@ -22,14 +22,18 @@ const AddDonationForm = () => {
   const [form] = Form.useForm();
   const onFinish = async (values: TAddDonationFormValues) => {
     // const res = await createDonation(values);
-    const res = await fetch(`${process.env.BACKEND_URL}/donation/create`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-      cache: "no-cache",
-    });
+    // console.log(`${process.env.}/donation/create`);
+    const res = await fetch(
+      `https://donation-nextjs-app-backend.vercel.app/api/v1/donation/create`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+        cache: "no-cache",
+      }
+    );
     const donationInfo = await res.json();
     console.log(donationInfo);
 

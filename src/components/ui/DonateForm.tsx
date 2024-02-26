@@ -11,10 +11,6 @@ import {
 import { TParams } from "@/app/(rootLayout)/donations/[donationId]/page";
 import { getUserByEmail, updateUserInfo } from "@/utils/actions/create-user";
 
-// export type TDonationValues = {
-//   collectedAmount: string;
-//   donators: string[];
-// };
 const DonateForm = ({ info }: { info: TParams }) => {
   const [form] = Form.useForm();
   //console.log(info);
@@ -25,25 +21,46 @@ const DonateForm = ({ info }: { info: TParams }) => {
     const donationInfo = await getAllDonationByID(info.donationId);
     // console.log(donationInfo.data);
     // console.log(donationInfo.data.collectedAmount);
-    const prevAmount = parseInt(donationInfo.data.collectedAmount);
-    const newAmount = prevAmount + parseInt(values.amount);
+    const newCollectedAmount =
+      parseInt(donationInfo.data.collectedAmount) + parseInt(values.amount);
+
     let donators = donationInfo?.data?.donators;
     console.log(donators);
-    donators.push(info?.userEmail);
+
+    const isExist = donators.findIndex(
+      (donator: { email: string }) => donator.email === info?.userEmail
+    );
+    console.log(isExist);
+    if (isExist !== -1) {
+      const newDonatedAmount =
+        parseInt(donators[isExist].donatedAmount) + parseInt(values.amount);
+      console.log(newCollectedAmount);
+      donators[isExist].donatedAmount = newDonatedAmount.toString();
+    } else {
+      const donatorInfo = {
+        email: info?.userEmail,
+        donatedAmount: values.amount,
+      };
+      donators.push(donatorInfo);
+    }
+
     console.log(donators);
+
     const data: Partial<TAddDonationFormValues> = {
-      // collectedAmount: values.amount,
-      collectedAmount: newAmount.toString(),
+      collectedAmount: newCollectedAmount.toString(),
       donators: donators,
     };
     console.log(data);
 
     const res = await updateDonation(info.donationId, data);
+    console.log(res);
     if (res.success) {
       const userInfo = await getUserByEmail(info?.userEmail);
       console.log(userInfo.data);
       const id = userInfo?.data[0]._id;
       const donatedAmount = userInfo?.data[0].donatedAmount;
+      const prevAmount = parseInt(donatedAmount);
+      const newAmount = prevAmount + parseInt(values.amount);
       console.log(id);
       console.log(info.donationId);
 
@@ -51,7 +68,7 @@ const DonateForm = ({ info }: { info: TParams }) => {
       donations.push(info.donationId);
       console.log(donations);
       const data = {
-        donatedAmount: values.amount,
+        donatedAmount: newAmount.toString(),
         donations: donations,
       };
       const updateInfo = await updateUserInfo(id, data);
