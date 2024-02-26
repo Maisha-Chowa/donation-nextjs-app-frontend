@@ -15,9 +15,10 @@ export type TDonation = {
   donators: string[];
 };
 
-const MyDonation = async ({ dontionsId }: any) => {
-  const data = await getAllDonationByID(dontionsId);
-  const donation = data?.data;
+const MyDonation = async (dontionId : string) => {
+  console.log(dontionId);
+  const data = await getAllDonationByID(dontionId);
+  const donation = data;
   console.log(donation);
   return (
     <div className="p-10 w-[80%] mx-auto">

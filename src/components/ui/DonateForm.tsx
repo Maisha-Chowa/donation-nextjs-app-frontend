@@ -27,21 +27,32 @@ const DonateForm = ({ info }: { info: TParams }) => {
     // console.log(donationInfo.data.collectedAmount);
     const prevAmount = parseInt(donationInfo.data.collectedAmount);
     const newAmount = prevAmount + parseInt(values.amount);
-
+    let donators = donationInfo?.data?.donators;
+    console.log(donators);
+    donators.push(info?.userEmail);
+    console.log(donators);
     const data: Partial<TAddDonationFormValues> = {
       // collectedAmount: values.amount,
       collectedAmount: newAmount.toString(),
-      donators: [info?.userEmail],
+      donators: donators,
     };
+    console.log(data);
+
     const res = await updateDonation(info.donationId, data);
     if (res.success) {
-      const userIfo = await getUserByEmail(info?.userEmail);
-      const id = userIfo?.data[0]._id;
+      const userInfo = await getUserByEmail(info?.userEmail);
+      console.log(userInfo.data);
+      const id = userInfo?.data[0]._id;
+      const donatedAmount = userInfo?.data[0].donatedAmount;
       console.log(id);
       console.log(info.donationId);
+
+      let donations = userInfo?.data[0].donations;
+      donations.push(info.donationId);
+      console.log(donations);
       const data = {
         donatedAmount: values.amount,
-        donations: [info.donationId],
+        donations: donations,
       };
       const updateInfo = await updateUserInfo(id, data);
       console.log(updateInfo);
