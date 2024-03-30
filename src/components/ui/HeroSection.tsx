@@ -1,50 +1,24 @@
-/* eslint-disable react/no-unescaped-entities */
-//import banner from "@/assests/banner.png";
-import banner from "../../assets/banner.png";
-import education from "../../assets/Rectangle 4287-1.png";
-import health from "../../assets/Health.png";
-import food from "../../assets/banner-2.png";
-import { Button } from "antd";
-import Image from "next/image";
-
+"use client";
 import React from "react";
-import { Carousel } from "antd";
-
-const contentStyle: React.CSSProperties = {
-  height: "160px",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
-};
-
+import CorouselImage from "./CorouselImage";
 const HeroSection: React.FC = () => (
-  <Carousel autoplay className="mx-24">
-    <div>
-      <Image
-        className="drop-shadow-2xl h-[450px] w-[100%]"
-        src={banner}
-        alt=""
-      />
+  <div className="grid grid-col-1 gap-4 lg:grid-cols-2 my-20 ">
+    <CorouselImage />
+    <div className="mx-auto my-4 px-8">
+      <h2 className="text-xl pt-4 text-slate-800">Smiling faces are the ...</h2>
+      <p className="text-4xl font-bold pt-4 text-sky-950">
+        Best <span className="text-fuchsia-600">Gratitude!</span>
+      </p>
+      <p className="text-lg font-bold pt-4 text-slate-800 text-wrap">
+        Next Donation : donate to charity projects around the world
+      </p>
+      <p className="text-lg  pt-4 text-slate-500 text-wrap">
+        Next Donation connects nonprofits, donors, and companies in nearly every
+        country in the world. We help fellow nonprofits access the funding,
+        tools, training, and support they need to serve their communities.
+      </p>
     </div>
-    <div>
-      <Image
-        className="drop-shadow-2xl h-[450px] w-[100%]"
-        src={health}
-        alt=""
-      />
-    </div>
-    <div>
-      <Image
-        className="drop-shadow-2xl h-[450px] w-[100%]"
-        src={education}
-        alt=""
-      />
-    </div>
-    <div>
-      <Image className="drop-shadow-2xl h-[450px] w-[100%]" src={food} alt="" />
-    </div>
-  </Carousel>
+  </div>
 );
 
 export default HeroSection;

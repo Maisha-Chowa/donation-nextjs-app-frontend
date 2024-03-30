@@ -12,7 +12,10 @@ const { Title } = Typography;
 
 const items = [
   { key: "1", label: "Home", href: "/" },
-  { key: "2", label: "Donations", href: "/donations" },
+  { key: "2", label: "Events", href: "/donations" },
+  { key: "3", label: "About Us", href: "/about" },
+  { key: "4", label: "Volunteer", href: "/volunteer" },
+  { key: "5", label: "Contact Us", href: "/contact-us" },
 ];
 
 const Navbar = ({ session }: { session: any }) => {

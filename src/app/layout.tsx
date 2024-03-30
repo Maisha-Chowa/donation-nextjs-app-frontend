@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <Providers>
-      <html lang="en">
+      <html lang="en" data-theme="cupcake">
         <body className={inter.className}>
           <div className="min-h-screen">{children}</div>
         </body>

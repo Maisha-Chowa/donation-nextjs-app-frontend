@@ -19,6 +19,9 @@ const config: Config = {
     preflight: false,
   },
   important: true,
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["light", "dark", "cupcake"],
+  },
 };
 export default config;
