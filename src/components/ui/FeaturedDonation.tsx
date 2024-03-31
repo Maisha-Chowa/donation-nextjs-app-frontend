@@ -9,7 +9,7 @@ const FeaturedDonation = async () => {
     <div className="mx-auto my-auto">
       <div className="my-12">
         <h1 className=" mx-auto text-center text-6xl">
-          <span className="mx-auto text-pink-900">Donations</span> that we
+          <span className="mx-auto text-amber-400">Donations</span> that we
           provide.
         </h1>
         <p className="mx-8 lg:mx-24 text-center text-lg mt-10 ">

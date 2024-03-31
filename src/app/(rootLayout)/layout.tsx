@@ -1,3 +1,4 @@
+import DemoNavbar from "@/components/shares/DemoNavbar";
 import Footer from "@/components/shares/Footer";
 import Navbar from "@/components/shares/Navbar";
 import { createUser } from "@/utils/actions/create-user";
@@ -29,7 +30,8 @@ const WithRootLayout = async ({
   // const res = await createUser(data);
   return (
     <div>
-      <Navbar session={session ? true : false} />
+      <DemoNavbar session={session ? true : false} />
+      {/* <Navbar session={session ? true : false} /> */}
       {children}
       <Footer />
     </div>

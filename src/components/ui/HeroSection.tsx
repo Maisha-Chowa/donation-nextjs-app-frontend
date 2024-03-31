@@ -7,7 +7,7 @@ const HeroSection: React.FC = () => (
     <div className="mx-auto my-4 px-8">
       <h2 className="text-xl pt-4 text-slate-800">Smiling faces are the ...</h2>
       <p className="text-4xl font-bold pt-4 text-sky-950">
-        Best <span className="text-fuchsia-600">Gratitude!</span>
+        Best <span className="text-amber-400">Gratitude!</span>
       </p>
       <p className="text-lg font-bold pt-4 text-slate-800 text-wrap">
         Next Donation : donate to charity projects around the world

@@ -6,7 +6,7 @@ import PeopleCarousel from "./PeopleCarousel";
 const About = () => {
   return (
     <>
-      <h1 className="text-4xl text-cyan-400 font-bold text-center">
+      <h1 className="text-4xl text-blue-950 font-bold my-8 mx-auto text-center">
         {" "}
         About Us
       </h1>
