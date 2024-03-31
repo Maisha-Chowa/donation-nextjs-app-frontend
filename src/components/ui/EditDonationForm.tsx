@@ -34,7 +34,7 @@ const EditDonationForm = ({
   return (
     <div className="bg-gray-200 lg:p-6 md:p-6 p-4 rounded-xl lg:min-h-screen">
       <div className="max-w-xl shadow-xl bg-white mx-auto">
-        <h1 className="text-center text-xl py-6 bg-gray-300">
+        <h1 className="text-center text-xl py-6 bg-blue-950 text-white">
           Edit Donation Information
         </h1>
         <Form
@@ -46,10 +46,7 @@ const EditDonationForm = ({
           className="p-5"
           form={form}
         >
-          <Form.Item
-            label="Donation Title"
-            name="title"
-          >
+          <Form.Item label="Donation Title" name="title">
             <Input
               type="text"
               size="large"
@@ -57,10 +54,7 @@ const EditDonationForm = ({
               defaultValue={donation?.title}
             />
           </Form.Item>
-          <Form.Item
-            label="Edit Image"
-            name="image"
-          >
+          <Form.Item label="Edit Image" name="image">
             <Input type="text" size="large" className="text-black" />
           </Form.Item>
           <Form.Item label="Category" name="category">
@@ -96,7 +90,13 @@ const EditDonationForm = ({
           </Form.Item>
 
           <Form.Item>
-            <Button type="default" className="text-white bg-pink-900" htmlType="submit" block size="large">
+            <Button
+              type="default"
+              className="text-white bg-blue-950"
+              htmlType="submit"
+              block
+              size="large"
+            >
               Update Now
             </Button>
           </Form.Item>

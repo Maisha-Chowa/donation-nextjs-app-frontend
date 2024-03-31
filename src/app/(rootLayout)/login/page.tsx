@@ -89,7 +89,7 @@ const LoginPage = () => {
 
         <Button
           type="default"
-          className="text-white bg-pink-900"
+          className="text-white bg-blue-950"
           block
           size="large"
           htmlType="submit"
@@ -109,7 +109,7 @@ const LoginPage = () => {
         block
         size="large"
         htmlType="submit"
-        className="mb-4 lg:mb-0 flex items-center justify-center gap-2 font-semibold w-full text-white bg-pink-900"
+        className="mb-4 lg:mb-0 flex items-center justify-center gap-2 font-semibold w-full text-white bg-blue-950"
         ghost
         onClick={() =>
           signIn("google", {

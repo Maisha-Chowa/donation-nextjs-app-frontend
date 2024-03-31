@@ -10,8 +10,7 @@ const items = [
   { key: "1", label: "Home", href: "/" },
   { key: "2", label: "Events", href: "/donations" },
   { key: "3", label: "About Us", href: "/about" },
-  { key: "4", label: "Volunteer", href: "/volunteer" },
-  { key: "5", label: "Contact Us", href: "/contact-us" },
+  // { key: "4", label: "Contact Us", href: "/contact-us" },
 ];
 
 const DemoNavbar = ({ session }: { session: any }) => {
@@ -33,8 +32,13 @@ const DemoNavbar = ({ session }: { session: any }) => {
 
       {session ? (
         <>
-          <li key="5">
-            <Link href="/dashboard">Dashboard</Link>
+          <li key="5" className="text-white text-lg">
+            <Link
+              href="/dashboard"
+              className="text-amber-400 no-underline hover:bg-blue-950"
+            >
+              Dashboard
+            </Link>
           </li>
 
           <button

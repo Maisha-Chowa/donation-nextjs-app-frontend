@@ -41,7 +41,7 @@ const Sidebar = ({
         <Layout className="lg:flex hidden">
           <Sider
             width={250}
-            className="min-h-screen bg-pink-900 m-6 py-2 rounded-xl"
+            className="min-h-screen bg-blue-950 m-6 py-2 rounded-xl"
           >
             <Menu
               className="h-full px-3 font-semibold  bg-transparent py-1"

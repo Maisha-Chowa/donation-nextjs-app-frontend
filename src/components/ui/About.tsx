@@ -2,8 +2,9 @@
 import Image from "next/image";
 
 import people5 from "../../assets/images/people5.png";
-import PeopleCarousel from "./PeopleCarousel";
+import PeopleCarousel from "./FounderPeople";
 import VolunteerCarousel from "./volunteer/VolunteerCarousel";
+import FounderPeople from "./FounderPeople";
 const About = () => {
   return (
     <>
@@ -110,7 +111,7 @@ const About = () => {
           </div>
         </div>
 
-        <PeopleCarousel />
+        <FounderPeople />
         <VolunteerCarousel />
       </div>
     </>

@@ -48,7 +48,7 @@ const AddDonationForm = () => {
   return (
     <div className="bg-gray-200 lg:p-6 md:p-6 p-4 rounded-xl lg:min-h-screen">
       <div className="max-w-xl shadow-xl bg-white mx-auto">
-        <h1 className="text-center text-xl py-6 bg-gray-300">
+        <h1 className="text-center text-xl py-6 bg-blue-950 text-white">
           Add Donation Information
         </h1>
         <Form
@@ -114,7 +114,12 @@ const AddDonationForm = () => {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" block size="large">
+            <Button
+              className="text-white bg-blue-950"
+              htmlType="submit"
+              block
+              size="large"
+            >
               Add Now
             </Button>
           </Form.Item>

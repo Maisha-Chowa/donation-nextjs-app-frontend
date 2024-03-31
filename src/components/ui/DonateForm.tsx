@@ -97,14 +97,14 @@ const DonateForm = ({ info }: { info: TParams }) => {
           type="text"
           placeholder="amount"
           size="large"
-          className="text-black border-double border-4 border-pink-500"
+          className="text-black border-double border-4 border-blue-950"
         />
       </Form.Item>
 
       <Form.Item>
         <Button
           type="default"
-          className="text-white bg-pink-900"
+          className="text-white bg-blue-950"
           htmlType="submit"
           block
           size="large"
