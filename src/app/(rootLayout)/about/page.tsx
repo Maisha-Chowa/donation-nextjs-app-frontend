@@ -1,5 +1,7 @@
-// const About = () => {
-//   return <About />;
-// };
+import About from "@/components/ui/About";
 
-// export default About;
+const AboutPage = () => {
+  return <About />;
+};
+
+export default AboutPage;
